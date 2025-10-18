@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ganji Neelakanta — Portfolio</title>
+  <meta name="description" content="Ganji Neelakanta — Software Developer · CS Undergrad (Cyber Security). Open to roles in Java Development, Web Development, and Cyber Security." />
+  <style>
+    :root{
+      --bg:#060a18;--surface:#0c1226;--card:#121a2ea6;--ink:#eaf0ff;--muted:#9fb0d3;--brand:#8b7cff;--accent:#22d3ee;--line:#1f2b49;--radius:22px;--shadow:0 18px 60px rgba(0,0,0,.45)
+    }
+    :root.light{--bg:#f6f9ff;--surface:#ffffff;--card:rgba(255,255,255,.78);--ink:#0a1326;--muted:#4b5878;--brand:#5b4bff;--accent:#0ea5e9;--line:#dfe7fb;--shadow:0 12px 34px rgba(0,0,0,.10)}
+    *,*:before,*:after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+
+    /* --- Professional video background --- */
+    .bg-video-wrap{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--bg)}
+    .bg-video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);filter:contrast(1.02) saturate(0.9) brightness(0.55)}
+    .bg-overlay{position:absolute;inset:0;background:radial-gradient(900px 600px at 80% -10%, rgba(34,211,238,.12), transparent 60%),
+                                      radial-gradient(900px 600px at -10% -10%, rgba(139,124,255,.10), transparent 60%)}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:80;background:color-mix(in oklab, var(--bg) 78%, transparent);backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:10px; font-weight: bold;}
+    .dot{width:12px;height:12px;border-radius:999px;background:conic-gradient(from 0deg,var(--brand),var(--accent));box-shadow:0 0 18px var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .nav-links a{color:var(--muted);font-size:14px;padding:12px 8px;border-bottom:2px solid transparent}
+    .nav-links a.active{color:var(--ink);border-color:var(--brand)}
+    .icon-btn{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;border:1px solid var(--line);background:color-mix(in oklab, var(--surface) 80%, transparent);cursor:pointer}
+
+    /* Buttons & cards */
+    .btn{display:inline-grid;place-items:center;padding:12px 18px;border-radius:14px;font-weight:800;color:#fff;cursor:pointer;box-shadow:var(--shadow);transition:transform .06s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(180deg,color-mix(in oklab, var(--brand) 100%, #fff 8%), color-mix(in oklab, var(--brand) 92%, #000 10%))}
+    .btn.accent{background:linear-gradient(180deg,color-mix(in oklab, var(--accent) 100%, #fff 6%), color-mix(in oklab, var(--accent) 92%, #000 8%))}
+    .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+    .btn.icon{display:inline-flex;align-items:center;gap:10px}
+    .btn.icon .ico{width:18px;height:18px;fill:currentColor;opacity:.9;flex:0 0 auto}
+
+    .card{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--card);box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+   .card::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:conic-gradient(from var(--angle,0deg), var(--accent), transparent, var(--brand), transparent, var(--accent));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.35;pointer-events:none}
+    .card:hover{--angle: 360deg; transition: --angle 2.2s linear}
+    .chip{display:inline-block;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:color-mix(in oklab, var(--surface) 82%, transparent);font-size:12px}
+    .muted{color:var(--muted)}
+
+    main section{scroll-margin-top:92px}
+    h2.section{font-size:26px;letter-spacing:.3px;margin:34px 0 16px}
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    /* Hero */
+    .hero{display:grid;place-items:center;min-height:78vh;text-align:center;padding:72px 0;position:relative}
+    .hero h1{font-size:clamp(48px,9vw,96px);line-height:1.02;margin:0 0 12px;font-weight:550;font-variation-settings:'wght' 550}
+    .roles{font-size:clamp(18px,2.5vw,26px);color:var(--muted);font-weight:800}
+    .intro{max-width:980px;margin:10px auto 0;font-size:clamp(14px,2.2vw,18px)}
+
+    /* About with photo */
+    #about .about-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    .avatar{width:100%;aspect-ratio:1/1;border-radius:18px;object-fit:cover;border:1px solid var(--line);box-shadow:var(--shadow)}
+
+    @media(max-width:960px){
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      #about .about-wrap{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-video-wrap" aria-hidden="true">
+    <video class="bg-video" id="bgVideo" autoplay muted loop playsinline>
+      <source src="bg_fixed.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <div class="brand" aria-label="Home"><span class="dot" aria-hidden></span> IARE</div>
+      <div class="nav-right">
+        <nav aria-label="Primary" class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#connect">Connect</a>
+        </nav>
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="home" class="hero">
+      <div>
+        <h1>Ganji Neelakanta</h1>
+        <div class="roles">Software Developer · CS Undergrad (Cyber Security)</div>
+        <p class="muted intro">A passionate Computer Science student specializing in Cyber Security, with hands-on experience in Java, full-stack web development, and security tools. Seeking opportunities to apply my skills in building secure and efficient software solutions.</p>
+        <div style="margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#about">About Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="card" style="margin-top:20px; padding-top:18px;">
+      <h2 class="section" style="margin-top:0; margin-bottom:12px;">About Me</h2>
+      <div class="about-wrap" style="align-items:flex-start;">
+        <div>
+          <p>I am a Computer Science undergraduate at the Institute of Aeronautical Engineering, specializing in Cyber Security. With a strong academic foundation (7.7/10 GPA) and a passion for technology, I am dedicated to developing robust and user-centric applications.</p>
+          <p>My practical experience includes a Java Programmer Internship at Vault of Codes, where I built a complete To-Do List application and honed my skills in data structures. I thrive on building real-world projects, from a full-stack Indian Stock Analyzer with real-time data to a machine-learning-powered Phishing Detection browser extension.</p>
+          <p>My core skills are centered around Java and Python, full-stack web development (React.js, Node.js), and cyber security tools like Nmap and Wireshark. I am eager to contribute to innovative projects and grow as a software engineer.</p>
+          <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+            <span class="chip">Java Development</span>
+            <span class="chip">Full-Stack Web Dev</span>
+            <span class="chip">Cyber Security</span>
+            <span class="chip">React.js</span>
+          </div>
+        </div>
+        <div>
+          <img src="profile.jpg" alt="Ganji Neelakanta" class="avatar" />
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section">Professional Experience</h2>
+        <div class="grid">
+            <article class="card">
+                <h3>Java Programmer Intern <span class="muted">(Mar 2024 – Apr 2024 · Vault of Codes)</span></h3>
+                <ul>
+                    <li>Gained hands-on experience in Java programming by working on real-world tasks, improving proficiency in data structures.</li>
+                    <li>Designed and developed a To-Do List application using Java, implementing features like task creation, deletion, and status updates.</li>
+                    <li>Managed daily tasks efficiently through the application, showcasing practical software development skills.</li>
+                </ul>
+                <div class="muted">Java · Data Structures · Software Development</div>
+            </article>
+        </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section">Technical Skills</h2>
+      <div class="grid grid-3">
+        <div class="card skill-card"><div class="skill-head"><span class="skill-icon">💻</span><strong>Languages & Databases</strong></div><div class="muted">Java, Python, SQL, MySQL</div></div>
+        <div class="card skill-card"><div class="skill-head"><span class="skill-icon">🌐</span><strong>Web Development</strong></div><div class="muted">HTML, CSS, JavaScript, Bootstrap, Node.js, React.js</div></div>
+        <div class="card skill-card"><div class="skill-head"><span class="skill-icon">🛡️</span><strong>Cyber Security Tools</strong></div><div class="muted">Nmap, Wireshark, Nessus</div></div>
+        <div class="card skill-card"><div class="skill-head"><span class="skill-icon">⚙️</span><strong>Software Development</strong></div><div class="muted">SDLC, Agile, Requirement Analysis, Low-Level Design</div></div>
+        <div class="card skill-card"><div class="skill-head"><span class="skill-icon">🐛</span><strong>Testing & Debugging</strong></div><div class="muted">Unit Testing, Integration Testing, Test Scenario Development</div></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section">Featured Projects</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Indian Stock Analyzer</h3>
+          <p class="muted">A dynamic web app for stock analysis with user authentication and real-time data.</p>
+          <ul>
+            <li>Integrated Alpha Vantage API for real-time and historical stock data.</li>
+            <li>Used Firebase for user authentication and managing user-specific watchlists.</li>
+            <li>Visualized data using Lightweight Charts for an interactive user experience.</li>
+          </ul>
+          <div class="muted">HTML · Tailwind CSS · JavaScript · Firebase</div>
+        </article>
+
+        <article class="card">
+          <h3>Phishing Detection</h3>
+          <p class="muted">A browser extension with an ML backend to detect and block phishing attempts in real time.</p>
+          <ul>
+            <li>Implemented an XGBoost classifier for high-accuracy URL and email feature extraction.</li>
+            <li>Designed a user-friendly Chrome extension interface.</li>
+            <li>Deployed a Flask API backend for seamless communication between frontend and model.</li>
+          </ul>
+          <div class="muted">Python · XGBoost · Flask · Chrome Extension</div>
+        </article>
+
+        <article class="card">
+          <h3>Zerodha Clone App</h3>
+          <p class="muted">A frontend clone of the Zerodha trading platform, focusing on a responsive and dynamic UI.</p>
+          <ul>
+            <li>Developed using React.js with a focus on modular, reusable components.</li>
+            <li>Implemented dynamic UI, responsive layouts, and state management.</li>
+            <li>Designed a scalable frontend architecture ready for backend API integration.</li>
+          </ul>
+          <div class="muted">React.js · HTML · CSS · Frontend Architecture</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="connect" class="connect card">
+      <h2 class="section" style="margin-top:0;font-size:36px">Let's Connect</h2>
+      <p class="muted" style="max-width:760px;margin:0 auto 18px">I'm actively seeking internship and full-time opportunities in software development. Feel free to reach out!</p>
+
+      <div class="subcta-row" style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap">
+        <a class="btn ghost icon" href="https://linkedin.com/in/ganjineelakanta" target="_blank" rel="noopener">LinkedIn
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7 0h3.83v1.98h.05C12 9.02 13.7 8 15.93 8 20.1 8 21 10.76 21 14.62V23h-4v-7.37c0-1.76-.03-4.02-2.45-4.02-2.46 0-2.84 1.92-2.84 3.9V23h-4V8.5z"/></svg>
+        </a>
+        <a class="btn ghost" href="ResumeBA.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn ghost icon" href="https://github.com/Neelakanta-ganji" target="_blank" rel="noopener">GitHub
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-1.98c-3.2.7-3.87-1.37-3.87-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.11-.76.41-1.26.74-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.2-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.75.81 1.2 1.83 1.2 3.09 0 4.43-2.69 5.4-5.26 5.69.42.36.79 1.07.79 2.17v3.22c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a>
+      </div>
+       <div style="margin-top:24px; display:flex; justify-content:center; align-items:center; gap:12px;">
+         <svg class="ico" style="width:18px;height:18px;fill:currentColor;opacity:.9;flex:0 0 auto" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
+         <a href="mailto:ganjineelakanta0@gmail.com" style="color:var(--ink);font-weight:500;">ganjineelakanta0@gmail.com</a>
+       </div>
+    </section>
+
+    <footer style="text-align:center;color:var(--muted);font-size:13px;margin-top:24px; padding-bottom: 24px;">© <span id="year"></span> · Ganji Neelakanta</footer>
+  </main>
+
+  <script>
+    // ----- Theme toggle (dark by default; remembers choice) -----
+    const root=document.documentElement, KEY='gn_theme';
+    const saved=localStorage.getItem(KEY);
+    if(saved){ root.classList.toggle('light', saved==='light'); root.classList.toggle('dark', saved==='dark'); }
+    document.getElementById('themeBtn').addEventListener('click',()=>{
+      const next=root.classList.contains('light')?'dark':'light';
+      root.classList.toggle('light', next==='light');
+      root.classList.toggle('dark', next==='dark');
+      localStorage.setItem(KEY,next);
+      try{ const v=document.getElementById('bgVideo'); v && v.play && v.play(); }catch(e){}
+    });
+
+    // ----- Scroll spy -----
+    const links=[...document.querySelectorAll('.nav-links a')];
+    const byHash=new Map(links.map(a=>[a.getAttribute('href'),a]));
+    function setActive(hash){ links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===hash)); }
+    links.forEach(a=> a.addEventListener('click',()=> setActive(a.getAttribute('href')) ));
+    window.addEventListener('hashchange',()=> setActive(location.hash || '#home'));
+    const spy=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ const hash='#'+e.target.id; if(byHash.get(hash)) setActive(hash); } });
+    },{ rootMargin:'-30% 0px -55% 0px', threshold:[0,0.25,0.5] });
+    document.querySelectorAll('main section').forEach(sec=>spy.observe(sec));
+    setActive(location.hash || '#home');
+
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
