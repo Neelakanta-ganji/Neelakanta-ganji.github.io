@@ -6,11 +6,15 @@
   <title>Ganji Neelakanta — Portfolio</title>
   <meta name="description" content="Ganji Neelakanta — Software Developer · CS Undergrad (Cyber Security). Open to roles in Java Development, Web Development, and Cyber Security." />
   
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C96DDQKB9C"></script>
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C96DDQKB9C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -75,7 +79,6 @@
       z-index:-2;
       overflow:hidden;
       background:var(--bg);
-      /* NEW: Parallax effect for video background */
       transform: translateZ(0); /* Ensure hardware acceleration */
       transition: transform 0.1s linear; /* Smooth parallax movement */
     }
@@ -86,14 +89,12 @@
       width:auto;height:auto;
       transform:translate(-50%,-50%);
       filter:contrast(1.02) saturate(0.9) brightness(0.55);
-      /* NEW: Maintain original video behavior, parallax is on the wrapper */
     }
     .bg-overlay{
       position:absolute;
       inset:0;
       background:radial-gradient(900px 600px at 80% -10%, rgba(34,211,238,.12), transparent 60%),
                                   radial-gradient(900px 600px at -10% -10%, rgba(139,124,255,.10), transparent 60%);
-      /* NEW: Add subtle noise texture */
       background-image: var(--bg-overlay-gradient), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJuIj48ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iLjMzMyAuMzMzIC4zMzMgMCAwIC4zMzMgLjMzMyAuMzMzIDAgMCAuMzMzIC4zMzMgLjMzMyAwIDAgMCAwIDAgMSAwIiAvPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIHN0aXRjaFRpbGVzPSJub1N0aXRjaCIgcmV0dXJuTGlnaHRuZWssIiBvY3RhdmVzPSI4IiAvPjxmZUNvbXBvc2l0ZSBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJsaWdodG5lc3MiIG9wZXJhdG9yPSJsaWdodGVuIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eSJuLjAiIC8+PC9zdmc=');
       background-size: cover;
       opacity: 0.15; /* Subtle noise */
@@ -225,10 +226,25 @@
     .roles{font-size:clamp(20px,3vw,30px);color:var(--muted);font-weight:700;margin-bottom: 20px; letter-spacing: 0.5px;}
     .intro{max-width:980px;margin:10px auto 0;font-size:clamp(16px,2.2vw,20px);line-height:1.7;} /* Larger, more readable intro text */
 
-    /* About with photo */
-    #about .about-wrap{grid-template-columns:1.5fr .8fr;gap:30px;align-items:flex-start;} /* Adjusted columns for about section */
-    .avatar{width:100%;aspect-ratio:1/1;border-radius:18px;object-fit:cover;border:2px solid var(--brand); /* Thicker border */box-shadow:var(--shadow);}
-
+    /* --- About Me Section --- */
+    #about .about-wrap{
+      display: grid; /* ADDED: ensure it's a grid */
+      grid-template-columns: 2fr 1fr; /* Give text 2 parts, image 1 part */
+      gap:30px;
+      align-items:flex-start;
+    }
+    .avatar{
+      width:100%;
+      max-width: 300px; /* Explicitly set a max width for the photo */
+      margin-left: auto; /* Center the image in its grid column */
+      margin-right: auto; /* Center the image in its grid column */
+      aspect-ratio:1/1;
+      border-radius:18px;
+      object-fit:cover;
+      border:2px solid var(--brand);
+      box-shadow:var(--shadow);
+    }
+    /* --- END About Me --- */
 
     /* --- Skill Icon Styles --- */
     .skill-card .skill-head {
@@ -252,12 +268,62 @@
     #connect .subcta-row { margin-top: 24px; }
     #connect .subcta-row .btn { padding: 14px 28px; } /* Larger connect buttons */
 
+    
+    /* --- RESPONSIVE STYLES --- */
+    
+    /* Tablet (screens > 768px and < 960px) */
     @media(max-width:960px){
-      .grid-2,.grid-3{grid-template-columns:1fr}
-      #about .about-wrap{grid-template-columns:1fr}
+      .grid-2,.grid-3{grid-template-columns:1fr} /* Stack grids for projects/skills */
+      /* NOTE: #about .about-wrap is NOT here, so it stays side-by-side */
       .hero h1{font-size:clamp(48px,12vw,96px);}
       .roles{font-size:clamp(18px,4vw,26px);}
       h2.section{font-size:clamp(24px, 6vw, 36px);}
+    }
+
+    /* Mobile (screens < 768px) */
+    @media(max-width: 768px) {
+      .wrap {
+        padding: 16px; /* Tighter padding on mobile */
+      }
+      .nav {
+        flex-direction: column; /* Stack brand and nav-right */
+        gap: 12px;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap; /* Allow nav links to wrap */
+        justify-content: center;
+        gap: 0 8px; /* Add gap between links */
+      }
+      .nav-links a {
+        font-size: 13px; /* Smaller text on mobile nav */
+        padding: 8px 4px; /* Tighter padding */
+      }
+      .nav-right {
+        gap: 12px;
+      }
+      .hero {
+        padding: 48px 0; /* Less padding on mobile */
+      }
+      .btn {
+        padding: 10px 18px; /* Smaller buttons on mobile */
+        font-size: 14px;
+      }
+      h2.section {
+        margin: 24px 0 16px; /* Tighter section spacing */
+      }
+      .card {
+        padding: 20px; /* Tighter card padding on mobile */
+      }
+      
+      /* --- NEW: Stack About Me only on small mobile --- */
+      #about .about-wrap {
+        grid-template-columns: 1fr; /* Stack about section on mobile */
+        gap: 24px;
+      }
+      .avatar {
+        max-width: 250px; /* Control avatar size in stacked mobile view */
+      }
     }
   </style>
 </head>
@@ -416,7 +482,8 @@
     <footer style="text-align:center;color:var(--muted);font-size:14px;margin-top:40px; padding-bottom: 24px;">© <span id="year"></span> · Ganji Neelakanta</footer>
   </main>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <script>
     // ----- All JavaScript is now embedded here -----
